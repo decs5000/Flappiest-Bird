@@ -1,7 +1,7 @@
 let gravity = 0.25;
 let bird_dy = 0;
 let score = 0;
-let game_state = "start";
+let game_state = "Start";
 
 let gameInterval = null;
 
