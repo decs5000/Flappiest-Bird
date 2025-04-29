@@ -38,3 +38,10 @@ function startGame() {
         applyGravity();
     }, 10);
 }   
+
+function onStartButtonClick(){
+    if (game_state !== "Play") {
+        game_state = "Play";
+        startGame();
+    }
+}
