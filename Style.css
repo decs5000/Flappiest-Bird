@@ -48,11 +48,13 @@ body {
   border: none;
   border-radius: 8px;
   cursor: pointer;
+  z-index: 2;
+  width: 300px;
+  height: 100px;
 }
 
 #start-btn:hover {
   background-color: #218838;
-  width: 7%;
   transition: ease-in-out 0.5s;
 }
 

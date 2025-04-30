@@ -36,11 +36,6 @@ document.addEventListener("keydown", (e) => {
     e.code === "KeyF" ||
     e.code === "KeyJ"
   ) {
-    if (game_state !== "Play") {
-      game_state = "Play";
-      startGame();
-    }
-
     bird_dy = -7;
   }
 });
@@ -60,6 +55,8 @@ function applyGravity() {
 function startGame() {
   newDiv.style.top = "150%";
   Score_Text.style.top = "150%";
+  start_btn.style.top = "20px";
+  start_btn.style.right = "20px";
   if (gameInterval !== null) return;
   gameInterval = setInterval(() => {
     applyGravity();
@@ -165,6 +162,10 @@ function checkCollsion() {
 function endGame() {
   newDiv.style.top = "30%";
   Score_Text.style.top = "30%";
+  start_btn.style.top = "45%";
+  start_btn.style.right = "43%";
+  start_btn.style.width = "300px";
+  start_btn.style.height = "100px";
   clearInterval(gameInterval);
   gameInterval = null;
   resetGame();
