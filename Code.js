@@ -16,11 +16,18 @@ let score_display = document.getElementById("score");
 let game_container = document.getElementById("game_container");
 let start_btn = document.getElementById("start-btn");
 
+//define the new elements
 let newDiv = document.createElement("div");
 newDiv.className = "endBox";
 game_container.appendChild(newDiv);
-newDiv.style.zIndex = "-2";
+newDiv.style.top = "150%";
 
+let Score_Text = document.createElement("div");
+Score_Text.className = "endBoxText";
+game_container.appendChild(Score_Text);
+Score_Text.style.top = "150%";
+
+//key press check
 document.addEventListener("keydown", (e) => {
   console.log(e.code);
   if (
@@ -38,6 +45,7 @@ document.addEventListener("keydown", (e) => {
   }
 });
 
+//read the name
 function applyGravity() {
   bird_dy += gravity;
   let birdTop = bird.offsetTop + bird_dy;
@@ -48,8 +56,10 @@ function applyGravity() {
   bird.style.top = birdTop + "px";
 }
 
+//read the name
 function startGame() {
-  newDiv.style.zIndex = "-1";
+  newDiv.style.top = "150%";
+  Score_Text.style.top = "150%";
   if (gameInterval !== null) return;
   gameInterval = setInterval(() => {
     applyGravity();
@@ -66,6 +76,7 @@ function startGame() {
   }, 10);
 }
 
+//button start click check
 function onStartButtonClick() {
   if (game_state !== "Play") {
     game_state = "Play";
@@ -113,6 +124,7 @@ function movePipes() {
   pipes.filter((pipe) => pipe.offsetLeft + pipe.offsetWidth > 0);
 }
 
+//READ THE NAMW!!!
 function checkCollsion() {
   let birdRect = bird.getBoundingClientRect();
   for (let pipe of pipes) {
@@ -149,15 +161,18 @@ function checkCollsion() {
   });
 }
 
+//if you ask what this does there will be problems
 function endGame() {
-  newDiv.style.zIndex = "3";
+  newDiv.style.top = "30%";
+  Score_Text.style.top = "30%";
   clearInterval(gameInterval);
   gameInterval = null;
-  alert("game over! Your score: " + score);
   resetGame();
 }
 
+//-----------v
 function resetGame() {
+  Score_Text.textContent = "Score: " + score;
   bird.style.top = "50%";
   bird_dy = 0;
   for (let pipe of pipes) {
@@ -172,6 +187,7 @@ function resetGame() {
   score_display.textContent = "Score: 0";
 }
 
+//sets the score
 function setScore(newScore) {
   score = newScore;
   score_display.textContent = "Score: " + score;
