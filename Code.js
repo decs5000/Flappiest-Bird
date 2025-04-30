@@ -3,9 +3,12 @@ let bird_dy = 0;
 let score = 0;
 let game_state = "Start";
 let pipes = [];
-let pipe_gap = 250;
+let pipe_gap = 150;
+let frame = 0;
 
 let gameInterval = null;
+
+const frame_time = 150;
 
 let bird = document.getElementById("bird");
 console.log(bird);
@@ -39,6 +42,12 @@ function startGame() {
   if (gameInterval !== null) return;
   gameInterval = setInterval(() => {
     applyGravity();
+    movePipes();
+    frame++;
+
+    if (frame % frame_time === 0) {
+      createPipe();
+    }
   }, 10);
 }
 

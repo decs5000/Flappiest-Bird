@@ -52,3 +52,18 @@ body {
   width: 7%;
   transition: ease-in-out 0.5s;
 }
+
+.pipe {
+  position: absolute;
+  width: 60px;
+  background-color: green;
+}
+
+.top-pipetop {
+  top: 0;
+  border-bottom: 5px solid darkgreen;
+}
+
+.bottom-pipe {
+  border-top: 5px solid darkgreen;
+}
