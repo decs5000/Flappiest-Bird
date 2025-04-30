@@ -12,17 +12,19 @@ body {
   margin: 0;
   background: url("assets/FlappyBirdBackground.png") no-repeat center center;
   background-size: cover;
+  z-index: 1;
 }
 
 #bird {
   width: 70px;
   height: 60px;
-  z-index: 1;
+  z-index: 0;
   position: absolute;
   top: 50%;
   left: 40%;
   background: url("assets/flappy\ bird.png") no-repeat center center;
   background-size: cover;
+  z-index: 1;
 }
 
 #score {
@@ -32,6 +34,7 @@ body {
   color: white;
   font-size: 24px;
   font-family: "Cal Sans";
+  z-index: 3;
 }
 
 #start-btn {
@@ -57,6 +60,7 @@ body {
   position: absolute;
   width: 60px;
   background: url("assets/FlappyBirdPipes.jpg") repeat-y center top;
+  z-index: 2;
 }
 
 .top-pipetop {
@@ -67,4 +71,14 @@ body {
 
 .bottom-pipe {
   border-top: 5px solid darkgreen;
+}
+
+.endBox {
+  position: absolute;
+  top: 40%;
+  left: 35%;
+  width: 500px;
+  height: 200px;
+  background-color: #2AB9DC;
+  z-index: 3;
 }

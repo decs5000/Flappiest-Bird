@@ -16,6 +16,11 @@ let score_display = document.getElementById("score");
 let game_container = document.getElementById("game_container");
 let start_btn = document.getElementById("start-btn");
 
+let newDiv = document.createElement("div");
+newDiv.className = "endBox";
+game_container.appendChild(newDiv);
+newDiv.style.zIndex = "-2";
+
 document.addEventListener("keydown", (e) => {
   console.log(e.code);
   if (
@@ -44,6 +49,7 @@ function applyGravity() {
 }
 
 function startGame() {
+  newDiv.style.zIndex = "-1";
   if (gameInterval !== null) return;
   gameInterval = setInterval(() => {
     applyGravity();
@@ -144,9 +150,9 @@ function checkCollsion() {
 }
 
 function endGame() {
+  newDiv.style.zIndex = "3";
   clearInterval(gameInterval);
   gameInterval = null;
-
   alert("game over! Your score: " + score);
   resetGame();
 }
