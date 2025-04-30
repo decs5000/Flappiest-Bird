@@ -3,7 +3,7 @@ let bird_dy = 0;
 let score = 0;
 let game_state = "Start";
 let pipes = [];
-let pipe_gap = 150;
+let pipe_gap = 250;
 let frame = 0;
 
 let gameInterval = null;
@@ -18,7 +18,12 @@ let start_btn = document.getElementById("start-btn");
 
 document.addEventListener("keydown", (e) => {
   console.log(e.code);
-  if (e.code === "Space" || e.code === "ArrowUp" || e.code === "KeyF" || e.code === "KeyJ") {
+  if (
+    e.code === "Space" ||
+    e.code === "ArrowUp" ||
+    e.code === "KeyF" ||
+    e.code === "KeyJ"
+  ) {
     if (game_state !== "Play") {
       game_state = "Play";
       startGame();
@@ -44,9 +49,13 @@ function startGame() {
     applyGravity();
     movePipes();
     frame++;
+    checkCollsion();
 
     if (frame % frame_time === 0) {
       createPipe();
+      if (pipe_gap > 200) {
+        pipe_gap = pipe_gap - 5;
+      }
     }
   }, 10);
 }
@@ -96,4 +105,68 @@ function movePipes() {
   }
   //remove old pipes from array
   pipes.filter((pipe) => pipe.offsetLeft + pipe.offsetWidth > 0);
+}
+
+function checkCollsion() {
+  let birdRect = bird.getBoundingClientRect();
+  for (let pipe of pipes) {
+    let pipeRect = pipe.getBoundingClientRect();
+
+    if (
+      birdRect.left < pipeRect.left + pipeRect.width &&
+      birdRect.left + birdRect.width > pipeRect.left &&
+      birdRect.top < pipeRect.top + pipeRect.height &&
+      birdRect.top + birdRect.height > pipeRect.top
+    ) {
+      endGame();
+      return;
+    }
+  }
+
+  if (
+    bird.offsetTop <= 0 ||
+    bird.offsetTop >= game_container.offsetHeight - bird.offsetHeight
+  ) {
+    endGame();
+  }
+
+  pipes.forEach((pipe, index) => {
+    if (index % 2 === 0) {
+      if (
+        pipe.offsetLeft + pipe.offsetWidth < bird.offsetLeft &&
+        !pipe.passed
+      ) {
+        pipe.passed = true;
+        setScore(score + 1);
+      }
+    }
+  });
+}
+
+function endGame() {
+  clearInterval(gameInterval);
+  gameInterval = null;
+
+  alert("game over! Your score: " + score);
+  resetGame();
+}
+
+function resetGame() {
+  bird.style.top = "50%";
+  bird_dy = 0;
+  for (let pipe of pipes) {
+    pipe.remove();
+  }
+  pipes = [];
+  setScore(0);
+  frame = 0;
+  game_state = "Start";
+  score_display.textContent = "";
+  pipe_gap = 250;
+  score_display.textContent = "Score: 0";
+}
+
+function setScore(newScore) {
+  score = newScore;
+  score_display.textContent = "Score: " + score;
 }
