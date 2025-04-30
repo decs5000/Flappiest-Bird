@@ -56,12 +56,13 @@ body {
 .pipe {
   position: absolute;
   width: 60px;
-  background-color: green;
+  background: url("assets/FlappyBirdPipes.jpg") repeat-y center top;
 }
 
 .top-pipetop {
   top: 0;
   border-bottom: 5px solid darkgreen;
+  rotate: 180deg;
 }
 
 .bottom-pipe {

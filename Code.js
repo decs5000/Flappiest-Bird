@@ -17,8 +17,8 @@ let game_container = document.getElementById("game_container");
 let start_btn = document.getElementById("start-btn");
 
 document.addEventListener("keydown", (e) => {
-  console.log("clicked");
-  if (e.code === "Space" || e.code === "ArrowUP") {
+  console.log(e.code);
+  if (e.code === "Space" || e.code === "ArrowUp" || e.code === "KeyF" || e.code === "KeyJ") {
     if (game_state !== "Play") {
       game_state = "Play";
       startGame();
@@ -66,7 +66,7 @@ function createPipe() {
 
   //top pipe
   let top_pipe = document.createElement("div");
-  top_pipe.className = "pipe";
+  top_pipe.className = "pipe top-pipe";
   top_pipe.style.height = pipe_position + "px";
   top_pipe.style.top = "0px";
   top_pipe.style.left = "100%";
@@ -74,7 +74,7 @@ function createPipe() {
 
   //bottom pipe
   let bottom_pipe = document.createElement("div");
-  bottom_pipe.className = "pipe";
+  bottom_pipe.className = "pipe bottom-pipe";
   bottom_pipe.style.height =
     game_container.offsetHeight - pipe_gap - pipe_position + "px";
   bottom_pipe.style.bottom = "0px";
