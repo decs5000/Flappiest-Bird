@@ -7,7 +7,7 @@ let gameInterval = null;
 
 let bird = document.getElementById("bird");
 let score_display = document.getElementById("score");
-let game_container = document.getElementById("game-container");
+let game_container = document.getElementById("game_container");
 let start_btn = document.getElementById("start-btn");
 
 document.addEventListener("keydown", (e) => {
