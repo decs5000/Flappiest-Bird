@@ -165,7 +165,7 @@ function checkCollsion() {
 function endGame() {
   hitSound.play();
   newDiv.style.top = "30%";
-  Score_Text.style.top = "30%";
+  Score_Text.style.top = "32%";
   start_btn.style.top = "45%";
   start_btn.style.right = "43%";
   start_btn.style.width = "300px";
@@ -216,8 +216,8 @@ function getDifficultySetting() {
     pipeSpeed = 2;
     pipe_gap = 325;
   } else if (difficulty === "hard") {
-    pipeSpeed = 5;
-    pipe_gap = 175;
+    pipeSpeed = 6;
+    pipe_gap = 200;
   }
 }
 
