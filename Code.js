@@ -11,7 +11,6 @@ let gameInterval = null;
 const frame_time = 150;
 
 let bird = document.getElementById("bird");
-console.log(bird);
 let score_display = document.getElementById("score");
 let game_container = document.getElementById("game_container");
 let start_btn = document.getElementById("start-btn");
@@ -49,13 +48,16 @@ function applyGravity() {
   birdTop = Math.min(birdTop, game_container.offsetHeight - bird.offsetHeight);
 
   bird.style.top = birdTop + "px";
+
+  let angle = Math.min(Math.max(bird_dy * 2 - 30), 90);
+  bird.style.transform = `rotate(${angle}deg)`;
 }
 
 //read the name
 function startGame() {
   newDiv.style.top = "150%";
   Score_Text.style.top = "150%";
-  start_btn.style.top = "20px";
+  start_btn.style.top = "200%";
   start_btn.style.right = "20px";
   if (gameInterval !== null) return;
   gameInterval = setInterval(() => {
@@ -63,12 +65,10 @@ function startGame() {
     movePipes();
     frame++;
     checkCollsion();
+    getDifficultySetting();
 
     if (frame % frame_time === 0) {
       createPipe();
-      if (pipe_gap > 200) {
-        pipe_gap = pipe_gap - 5;
-      }
     }
   }, 10);
 }
@@ -110,7 +110,7 @@ function createPipe() {
 //move pipes
 function movePipes() {
   for (let pipe of pipes) {
-    pipe.style.left = pipe.offsetLeft - 3 + "px";
+    pipe.style.left = pipe.offsetLeft - pipeSpeed + "px";
 
     //remove pipes from screen
     if (pipe.offsetLeft < -pipe.offsetWidth) {
@@ -173,6 +173,7 @@ function endGame() {
 
 //-----------v
 function resetGame() {
+  bird.style.transform = `rotate(${90}deg)`
   Score_Text.textContent = "Score: " + score;
   bird.style.top = "50%";
   bird_dy = 0;
@@ -192,4 +193,21 @@ function resetGame() {
 function setScore(newScore) {
   score = newScore;
   score_display.textContent = "Score: " + score;
+}
+
+let pipeSpeed = 3;
+
+function getDifficultySetting() {
+  let difficulty = document.getElementById("difficulty");
+
+  if (difficulty === "normal") {
+    pipeSpeed = 3;
+    pipe_gap = 250;
+  } else if (difficulty === "baby") {
+    pipeSpeed = 5;
+    pipe_gap = 325;
+  } else if (difficulty === "hard") {
+    pipeSpeed = 2;
+    pipe_gap = 175;
+  }
 }

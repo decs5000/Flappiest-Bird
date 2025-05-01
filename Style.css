@@ -25,6 +25,9 @@ body {
   background: url("assets/flappy\ bird.png") no-repeat center center;
   background-size: cover;
   z-index: 1;
+
+  transform-origin: center;
+  transition: transform 0.05s linear;
 }
 
 #score {
@@ -81,7 +84,7 @@ body {
   left: 30%;
   width: 700px;
   height: 300px;
-  background-color: #2AB9DC;
+  background-color: #2ab9dc;
   z-index: 3;
   border: solid 10px;
 }
@@ -89,9 +92,19 @@ body {
 .endBoxText {
   position: absolute;
   top: 40%;
-  left:42%;
+  left: 42%;
   width: 700px;
   height: 300px;
   z-index: 3;
   font-size: 75px;
+}
+
+#difficulty {
+  position: absolute;
+  top: 120px;
+  right: 20px;
+  padding: 8px;
+  font-size: 16px;
+  border-radius: 5px;
+  z-index: 3;
 }
