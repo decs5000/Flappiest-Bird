@@ -35,6 +35,8 @@ document.addEventListener("keydown", (e) => {
     e.code === "KeyF" ||
     e.code === "KeyJ"
   ) {
+
+    flapSound.play();
     bird_dy = -7;
   }
 });
@@ -55,6 +57,7 @@ function applyGravity() {
 
 //read the name
 function startGame() {
+  backgroundMusic.play();
   newDiv.style.top = "150%";
   Score_Text.style.top = "150%";
   start_btn.style.top = "200%";
@@ -111,7 +114,7 @@ function createPipe() {
 function movePipes() {
   for (let pipe of pipes) {
     pipe.style.left = pipe.offsetLeft - pipeSpeed + "px";
-
+console.log(pipeSpeed);
     //remove pipes from screen
     if (pipe.offsetLeft < -pipe.offsetWidth) {
       pipe.remove();
@@ -160,6 +163,7 @@ function checkCollsion() {
 
 //if you ask what this does there will be problems
 function endGame() {
+  hitSound.play();
   newDiv.style.top = "30%";
   Score_Text.style.top = "30%";
   start_btn.style.top = "45%";
@@ -168,6 +172,8 @@ function endGame() {
   start_btn.style.height = "100px";
   clearInterval(gameInterval);
   gameInterval = null;
+  backgroundMusic.pause();
+  backgroundMusic.currentTime = 0;
   resetGame();
 }
 
@@ -193,21 +199,32 @@ function resetGame() {
 function setScore(newScore) {
   score = newScore;
   score_display.textContent = "Score: " + score;
+  if (newScore > score) {
+    pipePass.play();
+  }
 }
 
 let pipeSpeed = 3;
 
 function getDifficultySetting() {
-  let difficulty = document.getElementById("difficulty");
+  let difficulty = document.getElementById("difficulty").value;
 
   if (difficulty === "normal") {
     pipeSpeed = 3;
     pipe_gap = 250;
   } else if (difficulty === "baby") {
-    pipeSpeed = 5;
+    pipeSpeed = 2;
     pipe_gap = 325;
   } else if (difficulty === "hard") {
-    pipeSpeed = 2;
+    pipeSpeed = 5;
     pipe_gap = 175;
   }
 }
+
+const pipePass = new Audio("assets/pipePass");
+const flapSound = new Audio("assets/pipePass");
+const hitSound = new Audio("assets/pipePass");
+
+const backgroundMusic = new Audio("assets/wind");
+backgroundMusic.loop = true;
+backgroundMusic.volume = 0.5;

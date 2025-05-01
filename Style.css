@@ -102,6 +102,7 @@ body {
 #difficulty {
   position: absolute;
   top: 120px;
+  top: 100px;
   right: 20px;
   padding: 8px;
   font-size: 16px;
