@@ -10,9 +10,10 @@ body {
   width: 100%;
   height: 100vh;
   margin: 0;
-  background: url("assets/j2.jpg") no-repeat center center;
+  background: url("assets/jungleV3.avif") no-repeat center center;
   background-size: cover;
   z-index: 1;
+  border: solid 5px;
 }
 
 #bird {
@@ -66,19 +67,18 @@ body {
 
 .pipe {
   position: absolute;
-  width: 60px;
-  background: url("assets/FlappyBirdPipes.jpg") repeat-y center top;
+  width: 100px;
+  background: url("assets/Bamboo7.png") repeat-y center center;
   z-index: 2;
+  border: solid 2px;
 }
 
 .top-pipetop {
-  top: 0;
-  border-bottom: 5px solid darkgreen;
-  rotate: 180deg;
+  border: solid 2px;
 }
 
 .bottom-pipe {
-  border-top: 5px solid darkgreen;
+  border: solid 2px;
 }
 
 .endBox {
