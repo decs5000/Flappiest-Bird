@@ -20,7 +20,7 @@ body {
   height: 60px;
   z-index: 0;
   position: absolute;
-  top: 50%;
+  top: 20%;
   left: 40%;
   background: url("assets/flappy\ bird.png") no-repeat center center;
   background-size: cover;
@@ -35,10 +35,11 @@ body {
   top: 10px;
   left: 10px;
   color: white;
-  font-size: 24px;
+  font-size: 48px;
   font-family: "Cal Sans";
   z-index: 3;
-  text-shadow: black 2px 2px;
+  text-shadow: black 4px 4px;
+  transition: ease-in-out;
 }
 
 #start-btn {
@@ -49,13 +50,13 @@ body {
   font-size: 16px;
   background-color: #28a745;
   color: white;
-  border: none;
+  border: solid 5px;
   border-radius: 8px;
   cursor: pointer;
   z-index: 2;
   width: 300px;
   height: 100px;
-  transition: 1s;
+  transition: 1s ease-in-out;
 }
 
 #start-btn:hover {
@@ -89,7 +90,7 @@ body {
   background-color: #3d823e ;
   z-index: 3;
   border: solid 10px;
-  transition: 1s;
+  transition: 1s ease-in-out;
 }
 
 .endBoxText {
@@ -100,15 +101,18 @@ body {
   height: 300px;
   z-index: 3;
   font-size: 65px;
-  transition: 1s;
+  transition: 1s ease-in-out;
 }
 
 #difficulty {
   position: absolute;
-  top: 50%;
+  top: 200%;
   right: 35%;
   padding: 8px;
   font-size: 16px;
   border-radius: 5px;
   z-index: 3;
+  transition: 1s ease-in-out;
+  background: #855e3e;
+  border: solid 5px;
 }

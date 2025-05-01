@@ -10,6 +10,8 @@ let gameInterval = null;
 
 const frame_time = 150;
 
+let highScore = localStorage.getItem("bambooHighScore") || 0;
+
 let bird = document.getElementById("bird");
 let score_display = document.getElementById("score");
 let game_container = document.getElementById("game_container");
@@ -62,7 +64,12 @@ function startGame() {
   Score_Text.style.top = "150%";
   start_btn.style.top = "200%";
   start_btn.style.right = "20px";
+  difficulty.style.top = "200%";
   if (gameInterval !== null) return;
+
+  score_display.textContent = "Score: " + score + " | Best: " + highScore;
+  highScore = localStorage.getItem("bambooHighScore") || 0;
+
   gameInterval = setInterval(() => {
     applyGravity();
     movePipes();
@@ -163,6 +170,11 @@ function checkCollsion() {
 
 //if you ask what this does there will be problems
 function endGame() {
+
+if (Number(score) > Number(highScore)) {
+  localStorage.setItem("bambooHighScore", score);
+}
+
   hitSound.play();
   newDiv.style.top = "30%";
   Score_Text.style.top = "32%";
@@ -170,6 +182,7 @@ function endGame() {
   start_btn.style.right = "43%";
   start_btn.style.width = "300px";
   start_btn.style.height = "100px";
+  difficulty.style.top = "50%"
   clearInterval(gameInterval);
   gameInterval = null;
   backgroundMusic.pause();
@@ -181,7 +194,7 @@ function endGame() {
 function resetGame() {
   bird.style.transform = `rotate(${90}deg)`
   Score_Text.textContent = "Score: " + score;
-  bird.style.top = "50%";
+  bird.style.top = "20%";
   bird_dy = 0;
   for (let pipe of pipes) {
     pipe.remove();
@@ -192,16 +205,16 @@ function resetGame() {
   game_state = "Start";
   score_display.textContent = "";
   pipe_gap = 250;
-  score_display.textContent = "Score: 0";
+  score_display.textContent = "Score: 0 | Best: " + highScore;
 }
 
 //sets the score
 function setScore(newScore) {
   score = newScore;
-  score_display.textContent = "Score: " + score;
   if (newScore > score) {
     pipePass.play();
   }
+  score_display.textContent = "Score: " + score + " | Best: " + highScore;
 }
 
 let pipeSpeed = 3;
@@ -228,3 +241,17 @@ const hitSound = new Audio("assets/pipePass");
 const backgroundMusic = new Audio("assets/wind");
 backgroundMusic.loop = true;
 backgroundMusic.volume = 0.5;
+
+const muteButton = document.getElementById("muteButton");
+
+let musicMuted = false;
+muteButton.addEventListener("click", () => {
+  if (musicMuted) {
+    backgroundMusic.play();
+    muteButton.textContent = "Mute Music";
+  }else {
+    backgroundMusic.pause();
+    muteButton.textContent = "Play Music";
+  }
+  musicMuted = !musicMuted;
+})
