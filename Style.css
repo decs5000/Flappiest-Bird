@@ -81,7 +81,7 @@ body {
   left: 30%;
   width: 700px;
   height: 300px;
-  background-color: #2AB9DC;
+  background-color: #2ab9dc;
   z-index: 3;
   border: solid 10px;
 }
@@ -89,9 +89,18 @@ body {
 .endBoxText {
   position: absolute;
   top: 40%;
-  left:42%;
+  left: 42%;
   width: 700px;
   height: 300px;
   z-index: 3;
   font-size: 75px;
+}
+
+#difficulty {
+  position: absolute;
+  top: 100px;
+  right: 20px;
+  padding: 8px;
+  font-size: 16px;
+  border-radius: 5px;
 }
