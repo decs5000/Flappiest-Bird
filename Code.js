@@ -44,6 +44,13 @@ document.addEventListener("keydown", (e) => {
   }
 });
 
+document.addEventListener("touchstart", (e) => {
+
+    flapSound.play();
+    bird_dy = -7;
+  
+});
+
 jump.onclick = () =>{
   flapSound.play();
   bird_dy = -7;
