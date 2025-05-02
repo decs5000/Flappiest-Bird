@@ -168,6 +168,7 @@ function checkCollsion() {
       ) {
         pipe.passed = true;
         setScore(score + 1);
+        pipePass.play();
       }
     }
   });
@@ -238,11 +239,11 @@ function getDifficultySetting() {
   }
 }
 
-const pipePass = new Audio("assets/pipePass");
-const flapSound = new Audio("assets/FlapSFX");
-const hitSound = new Audio("assets/SquawkSFX");
+const pipePass = new Audio("assets/pipePass.mp3");
+const flapSound = new Audio("assets/FlapSFX.mp3");
+const hitSound = new Audio("assets/SquawkSFX.mp3");
 
-const backgroundMusic = new Audio("assets/JungleSFX");
+const backgroundMusic = new Audio("assets/JungleSFX.mp3");
 backgroundMusic.loop = true;
 backgroundMusic.volume = 0.5;
 
