@@ -32,7 +32,6 @@ Score_Text.style.top = "150%";
 
 //key press check
 document.addEventListener("keydown", (e) => {
-  console.log(e.code);
   if (
     e.code === "Space" ||
     e.code === "ArrowUp" ||
@@ -128,7 +127,6 @@ function createPipe() {
 function movePipes() {
   for (let pipe of pipes) {
     pipe.style.left = pipe.offsetLeft - pipeSpeed + "px";
-    console.log(pipeSpeed);
     //remove pipes from screen
     if (pipe.offsetLeft < -pipe.offsetWidth) {
       pipe.remove();
