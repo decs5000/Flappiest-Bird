@@ -134,5 +134,5 @@ body {
   color: #28a745;
   -webkit-text-stroke-width: 3px;
   -webkit-text-stroke-color: black;
-
+  z-index: 5;
 }

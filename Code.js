@@ -234,10 +234,10 @@ function getDifficultySetting() {
 }
 
 const pipePass = new Audio("assets/pipePass");
-const flapSound = new Audio("assets/pipePass");
-const hitSound = new Audio("assets/pipePass");
+const flapSound = new Audio("assets/FlapSFX");
+const hitSound = new Audio("assets/SquawkSFX");
 
-const backgroundMusic = new Audio("assets/wind");
+const backgroundMusic = new Audio("assets/JungleSFX");
 backgroundMusic.loop = true;
 backgroundMusic.volume = 0.5;
 
