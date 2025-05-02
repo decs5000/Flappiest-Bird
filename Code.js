@@ -37,7 +37,6 @@ document.addEventListener("keydown", (e) => {
     e.code === "KeyF" ||
     e.code === "KeyJ"
   ) {
-
     flapSound.play();
     bird_dy = -7;
   }
@@ -76,6 +75,7 @@ function startGame() {
     frame++;
     checkCollsion();
     getDifficultySetting();
+    //updateBirdAvatar(score); I dont like it
 
     if (frame % frame_time === 0) {
       createPipe();
@@ -121,7 +121,7 @@ function createPipe() {
 function movePipes() {
   for (let pipe of pipes) {
     pipe.style.left = pipe.offsetLeft - pipeSpeed + "px";
-console.log(pipeSpeed);
+    console.log(pipeSpeed);
     //remove pipes from screen
     if (pipe.offsetLeft < -pipe.offsetWidth) {
       pipe.remove();
@@ -170,10 +170,9 @@ function checkCollsion() {
 
 //if you ask what this does there will be problems
 function endGame() {
-
-if (Number(score) > Number(highScore)) {
-  localStorage.setItem("bambooHighScore", score);
-}
+  if (Number(score) > Number(highScore)) {
+    localStorage.setItem("bambooHighScore", score);
+  }
 
   hitSound.play();
   newDiv.style.top = "30%";
@@ -182,7 +181,7 @@ if (Number(score) > Number(highScore)) {
   start_btn.style.right = "43%";
   start_btn.style.width = "300px";
   start_btn.style.height = "100px";
-  difficulty.style.top = "50%"
+  difficulty.style.top = "50%";
   clearInterval(gameInterval);
   gameInterval = null;
   backgroundMusic.pause();
@@ -192,7 +191,7 @@ if (Number(score) > Number(highScore)) {
 
 //-----------v
 function resetGame() {
-  bird.style.transform = `rotate(${90}deg)`
+  bird.style.transform = `rotate(${90}deg)`;
   Score_Text.textContent = "Score: " + score;
   bird.style.top = "20%";
   bird_dy = 0;
@@ -249,9 +248,19 @@ muteButton.addEventListener("click", () => {
   if (musicMuted) {
     backgroundMusic.play();
     muteButton.textContent = "Mute Music";
-  }else {
+  } else {
     backgroundMusic.pause();
     muteButton.textContent = "Play Music";
   }
   musicMuted = !musicMuted;
-})
+});
+
+function updateBirdAvatar(score) {
+  if (score >= 10 && score < 20) {
+    bird.style.background = "url(assets/Toucan.png)";
+  } else if (score >= 20) {
+    bird.style.background = "url(assets/Parrot.png)"
+  } else {
+    bird.style.background = "url(assets/flappy\ bird.png) no-repeat center center"
+  }
+}

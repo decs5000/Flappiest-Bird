@@ -68,17 +68,17 @@ body {
 .pipe {
   position: absolute;
   width: 100px;
-  background: url("assets/Bamboo7.png") repeat-y center center;
+  background: url("assets/Cobble.jpg") repeat-y center center;
   z-index: 2;
-  border: solid 2px;
+  border: solid 4px;
 }
 
 .top-pipetop {
-  border: solid 2px;
+  border: solid 4px;
 }
 
 .bottom-pipe {
-  border: solid 2px;
+  border: solid 4px;
 }
 
 .endBox {
@@ -87,7 +87,7 @@ body {
   left: 30%;
   width: 700px;
   height: 300px;
-  background-color: #3d823e ;
+  background-color: #3d823e;
   z-index: 3;
   border: solid 10px;
   transition: 1s ease-in-out;
@@ -115,4 +115,18 @@ body {
   transition: 1s ease-in-out;
   background: #855e3e;
   border: solid 5px;
+}
+
+
+.pixelify-sans {
+  font-family: "Pixelify Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: weight;
+  font-style: normal;
+}
+
+#title {
+  font-family: "Pixelify Sans", sans-serif;
+  top: 10%;
+  right: 50%;
 }
