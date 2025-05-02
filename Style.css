@@ -150,7 +150,7 @@ body {
 }
 
 
-@media screen and (max-width :512px){
+@media screen and (max-width :1000px){
   #jump{
    visibility: visible;
   }
