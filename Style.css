@@ -126,7 +126,13 @@ body {
 }
 
 #title {
+  position: absolute;
   font-family: "Pixelify Sans", sans-serif;
-  top: 10%;
-  right: 50%;
+  font-size: 72px;
+  top: 1px;
+  right: 42%;
+  color: #28a745;
+  -webkit-text-stroke-width: 3px;
+  -webkit-text-stroke-color: black;
+
 }
