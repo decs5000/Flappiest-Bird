@@ -145,13 +145,5 @@ body {
   height: 50px;
   background-color: #218838;
   color: white;
-  visibility: hidden;
   z-index: 5;
-}
-
-
-@media screen and (max-width :1000px){
-  #jump{
-   visibility: visible;
-  }
 }
