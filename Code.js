@@ -257,18 +257,6 @@ backgroundMusic.volume = 0.5;
 
 const muteButton = document.getElementById("muteButton");
 
-let musicMuted = false;
-muteButton.addEventListener("click", () => {
-  if (musicMuted) {
-    backgroundMusic.play();
-    muteButton.textContent = "Mute Music";
-  } else {
-    backgroundMusic.pause();
-    muteButton.textContent = "Play Music";
-  }
-  musicMuted = !musicMuted;
-});
-
 function updateBirdAvatar(score) {
   if (score >= 10 && score < 20) {
     bird.style.background = "url(assets/Toucan.png)";
