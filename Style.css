@@ -136,3 +136,22 @@ body {
   -webkit-text-stroke-color: black;
   z-index: 5;
 }
+
+
+#jump{
+  position: absolute;
+  bottom: 10%;
+  width: 100px;
+  height: 50px;
+  background-color: #218838;
+  color: white;
+  visibility: hidden;
+  z-index: 5;
+}
+
+
+@media screen and (max-width :512px){
+  #jump{
+   visibility: visible;
+  }
+}

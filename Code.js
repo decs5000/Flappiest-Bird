@@ -16,6 +16,8 @@ let bird = document.getElementById("bird");
 let score_display = document.getElementById("score");
 let game_container = document.getElementById("game_container");
 let start_btn = document.getElementById("start-btn");
+let jump = document.getElementById("jump");
+
 
 //define the new elements
 let newDiv = document.createElement("div");
@@ -41,6 +43,11 @@ document.addEventListener("keydown", (e) => {
     bird_dy = -7;
   }
 });
+
+jump.onclick = () =>{
+  flapSound.play();
+  bird_dy = -7;
+}
 
 //read the name
 function applyGravity() {
